@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Sitecore Commerce ExportCsv</Description>
+    <TargetFramework>net471</TargetFramework>
+    <PackageTags>$(PackageTags);Commerce;Plugin;Sample;ExportCsv</PackageTags>
+    <PackageIconUrl>http://www.sitecore.net/favicon.ico</PackageIconUrl>
+    <PackageProjectUrl>http://www.sitecore.net/</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.sitecore.net/platform/pricing.aspx</PackageLicenseUrl>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Components\**" />
+    <Compile Remove="Entities\**" />
+    <Compile Remove="Policies\**" />
+    <EmbeddedResource Remove="Components\**" />
+    <EmbeddedResource Remove="Entities\**" />
+    <EmbeddedResource Remove="Policies\**" />
+    <None Remove="Components\**" />
+    <None Remove="Entities\**" />
+    <None Remove="Policies\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ConfigureServiceApiBlock.cs" />
+    <Content Include="ConfigureSitecore.cs" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>NU1603</NoWarn>
+    <WarningsAsErrors />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>NU1603</NoWarn>
+    <WarningsAsErrors />
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+    <Reference Include="System.Transactions" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="18.0.0" />
+    <PackageReference Include="Sitecore.Commerce.Core" Version="5.0.*" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Catalog" Version="5.0.*" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Pricing" Version="5.0.*" />
+  </ItemGroup>
+</Project>
